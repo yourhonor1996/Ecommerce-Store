@@ -1,0 +1,1 @@
+This is a practice django project to hone mys skills as a backend django developer.
