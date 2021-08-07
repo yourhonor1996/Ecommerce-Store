@@ -1,7 +1,7 @@
 from store.models import Customer, Product, Order
 from django.shortcuts import render
 from django.views import View
-
+from django.http import JsonResponse
 
 class CartView(View):
     
@@ -41,3 +41,7 @@ class CheckoutView(View):
         context = {'items':items, 'order': order}
         return render(request, 'store/checkout.html', context)
 
+class UpdateItemView(View):
+    
+    def post(self, request):
+        return JsonResponse('Item was added', safe= False)
