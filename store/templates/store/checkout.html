@@ -44,7 +44,7 @@
             </div>
             <br>
 
-            <div class="box-element" id="payment-info">
+            <div class="box-element hidden" id="payment-info">
                 <small>Paypal Options</small>
             </div>
 
@@ -56,14 +56,18 @@
                 <hr>
                 <h3>Order Summary</h3>
                 <hr>
+                
+                {% for item in items %}
                 <div class="cart-row">
-                    <div style="flex:2"><img class="row-image" src="{% static 'images/product-empty.jpg' %}"></div>
-                    <div style="flex:2"><p>Product</p></div>
-                    <div style="flex:1"><p>$20</p></div>
-                    <div style="flex:1"><p>x2</p></div>
+                    <div style="flex:2"><img class="row-image" src={{item.product.image.url}}></div>
+                    <div style="flex:2"><p>{{item.product.name}}</p></div>
+                    <div style="flex:1"><p>${{item.product.price|floatformat:2}}</p></div>
+                    <div style="flex:1"><p>x{{item.quantity}}</p></div>
                 </div>
-                <h5>Items:   2</h5>
-                <h5>Total:   $4</h5>
+                {% endfor %}
+
+                <h5>Items:   {{order.get_cart_items_count}}</h5>
+                <h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
 
             </div>
         </div>
@@ -71,4 +75,3 @@
 {% endblock content %}
 
 
-<h3>Store</h3>
