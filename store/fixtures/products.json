@@ -1,0 +1,56 @@
+[
+    {
+        "model": "store.Product",
+        "pk": 1,
+        "fields":{
+            "name": "Headphones",
+            "price": 179.99,
+            "digital": true
+        }
+    },
+    {
+        "model": "store.Product",
+        "pk": 2,
+        "fields":{
+            "name": "Mount of Olives Book",
+            "price": 14.99,
+            "digital": false
+        }
+    },
+    {
+        "model": "store.Product",
+        "pk": 3,
+        "fields":{
+            "name": "Project Source Code",
+            "price": 19.99,
+            "digital": true
+        }
+    },
+    {
+        "model": "store.Product",
+        "pk": 4,
+        "fields":{
+            "name": "Watch",
+            "price": 259.00,
+            "digital": false
+        }
+    },
+    {
+        "model": "store.Product",
+        "pk": 5,
+        "fields":{
+            "name": "Shoes",
+            "price": 89.99,
+            "digital": false
+        }
+    },
+    {
+        "model": "store.Product",
+        "pk": 6,
+        "fields":{
+            "name": "T-Shirt",
+            "price": 25.99,
+            "digital": false
+        }
+    }
+]
