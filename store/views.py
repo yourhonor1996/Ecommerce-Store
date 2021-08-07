@@ -1,5 +1,6 @@
 from store.models import Customer, Product, Order
 from django.shortcuts import render
+from django.views import View
 
 # Create your views here.
 
@@ -17,8 +18,9 @@ def cart(request):
         items = order.orderitem_set.all()
     else:
         items = []
+        order = {'get_cart_total':0, 'get_cart_items_count':0}
     
-    context = {'items':items}
+    context = {'items':items, 'order': order}
     return render(request, 'store/cart.html', context)
     
 def checkout(request):

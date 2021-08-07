@@ -6,6 +6,7 @@
             "name": "Headphones",
             "price": 179.99,
             "digital": true,
+            "image": "images/headphones.jpg"
         }
     },
     {
@@ -14,7 +15,8 @@
         "fields":{
             "name": "Mount of Olives Book",
             "price": 14.99,
-            "digital": false
+            "digital": false,
+            "image": "images/mount-of-olives.jpg"
         }
     },
     {
@@ -23,7 +25,8 @@
         "fields":{
             "name": "Project Source Code",
             "price": 19.99,
-            "digital": true
+            "digital": true,
+            "image": "images/source-code.jpg"
         }
     },
     {
@@ -32,7 +35,8 @@
         "fields":{
             "name": "Watch",
             "price": 259.00,
-            "digital": false
+            "digital": false,
+            "image": "images/watch.jpg"
         }
     },
     {
@@ -41,7 +45,8 @@
         "fields":{
             "name": "Shoes",
             "price": 89.99,
-            "digital": false
+            "digital": false,
+            "image": "images/shoes.jpg"
         }
     },
     {
@@ -50,7 +55,8 @@
         "fields":{
             "name": "T-Shirt",
             "price": 25.99,
-            "digital": false
+            "digital": false,
+            "image": "images/t-shirt.jpg"
         }
     }
 ]
