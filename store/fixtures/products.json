@@ -5,7 +5,7 @@
         "fields":{
             "name": "Headphones",
             "price": 179.99,
-            "digital": true
+            "digital": true,
         }
     },
     {
