@@ -3,21 +3,20 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-lg-6" id="form-wrapper">
-            <div class="box-element">
+        <div class="col-lg-6" >
+            <div id="form-wrapper" class="box-element">
                 <form id="form">
 
                     <div id="user-info">
                         <div class="form-field">
-                            <input requeired class="form-control" type="text" name="name" placeholder="Name..">
+                            <input required class="form-control" type="text" name="name" placeholder="Name..">
                         </div>    
                         <div class="form-field">
-                            <input requeired class="form-control" type="email" name="email" placeholder="Email..">
+                            <input required class="form-control" type="email" name="email" placeholder="Email..">
                         </div>    
                     </div>
 
                     <div id="shipping-info">
-                        <hr>
                         <p>Shipping Information</p>
                         <hr>
                         <div class="form-field">
@@ -30,7 +29,7 @@
                             <input class="form-control" type="text" name="state" placeholder="State..">
                         </div>
                         <div class="form-field">
-                            <input class="form-control" type="text" name="zipcode" placeholder="Zipcode..">
+                            <input class="form-control" type="text" name="zipcode" placeholder="ZipCode..">
                         </div>
                         <div class="form-field">
                             <input class="form-control" type="text" name="country" placeholder="Country..">
@@ -45,10 +44,10 @@
             <br>
 
             <div class="box-element hidden" id="payment-info">
-                <small>Paypal Options</small>
+                <small>PayPal Options</small>
                 <button id="make-payment" class="btn btn-success">Make Payment</button>
             </div>
-
+            
         </div>
 
         <div class="col-lg-6">
@@ -78,6 +77,14 @@
     <script type="text/javascript">
     
         var shipping = '{{order.shipping}}'
+        if (user != 'Anonymous'){
+            document.getElementById('user-info').innerHTML = ''
+            if (shipping == 'False'){
+                document.getElementById('form-wrapper').classList.add('hidden')
+                document.getElementById('payment-info').classList.remove('hidden')
+
+            }
+        }
         if (shipping == 'False'){
             document.getElementById('shipping-info').innerHTML = ''
         }
