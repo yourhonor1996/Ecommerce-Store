@@ -1,11 +1,10 @@
 import json
-from store.models import Customer, OrderItem, Product, Order
+from store.models import Customer, OrderItem, Product, Order, ShippingAddress
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
+from datetime import datetime
+
 class CartView(View):
     
     def get(self, request):
@@ -85,3 +84,36 @@ class InfoAPIView(View):
         # if order_item.quantity <= 0:
         #     order_item.delete()
         # return JsonResponse({'cart_item_count': order.get_cart_items_count}, safe= False)
+
+
+class ProcessOrderView(View):
+    
+    def post(self, request):
+        transacion_id = datetime.now().timestamp()
+        data = json.loads(request.body)
+        
+        if request.user.is_authenticated:
+            customer = request.user.customer
+            order, created = Order.objects.get_or_create(customer= customer, complete= False)
+            form = data['form']
+            total = float(form['total'])
+            order.transaction_id = transacion_id
+            
+            if total == order.get_cart_total:
+                order.complete = True
+            order.save()
+
+            if order.shipping == True:
+                ShippingAddress.objects.create(
+                    customer= customer,
+                    order= order,
+                    address = form['address'],
+                    city= form['city'],
+                    zipcode= form['zipcode'] 
+
+                )
+            
+        else:
+            print('user is not logged in')
+
+        return JsonResponse('Payment Complete!', safe= False)

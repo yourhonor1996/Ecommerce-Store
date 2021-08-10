@@ -67,7 +67,7 @@
                 {% endfor %}
 
                 <h5>Items:   {{order.get_cart_items_count}}</h5>
-                <h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
+                <h5>Total:   ${{order.get_cart_total}}</h5>
 
             </div>
         </div>
@@ -128,7 +128,25 @@
 
             console.log('Shipping info:', shippingInfo)
             console.log('User info:', userFormData)
+            // send user data
+            var url = '/process_order/'
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                    'X-CSRFToken':csrftoken,
+                },
+                body: JSON.stringify({'form':userFormData, 'shipping':shippingInfo})
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                alert('Transaction completed');
+                window.location.href = "{% url 'store' %}"
+            })
+            
         }
+
         
     </script>
 {% endblock content %}
